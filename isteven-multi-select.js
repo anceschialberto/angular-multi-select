@@ -365,13 +365,13 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                                             if ( typeof attrs.disableProperty === 'undefined' ) {
                                                 $scope.filteredModel[ j ][ $scope.tickProperty ] = false;
                                                 // we refresh input model as well
-                                                inputModelIndex = $scope.filteredModel[ j ][ $scope.indexProperty ];
+                                                var inputModelIndex = $scope.filteredModel[ j ][ $scope.indexProperty ];
                                                 $scope.inputModel[ inputModelIndex ][ $scope.tickProperty ] = false;
                                             }
                                             else if ( $scope.filteredModel[ j ][ attrs.disableProperty ] !== true ) {
                                                 $scope.filteredModel[ j ][ $scope.tickProperty ] = false;
                                                 // we refresh input model as well
-                                                inputModelIndex = $scope.filteredModel[ j ][ $scope.indexProperty ];
+                                                var inputModelIndex = $scope.filteredModel[ j ][ $scope.indexProperty ];
                                                 $scope.inputModel[ inputModelIndex ][ $scope.tickProperty ] = false;
                                             }
                                         }
@@ -384,14 +384,14 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                                             if ( typeof attrs.disableProperty === 'undefined' ) {
                                                 $scope.filteredModel[ j ][ $scope.tickProperty ] = true;                                                
                                                 // we refresh input model as well
-                                                inputModelIndex = $scope.filteredModel[ j ][ $scope.indexProperty ];
+                                                var inputModelIndex = $scope.filteredModel[ j ][ $scope.indexProperty ];
                                                 $scope.inputModel[ inputModelIndex ][ $scope.tickProperty ] = true;
 
                                             }                                            
                                             else if ( $scope.filteredModel[ j ][ attrs.disableProperty ] !== true ) {
                                                 $scope.filteredModel[ j ][ $scope.tickProperty ] = true;
                                                 // we refresh input model as well
-                                                inputModelIndex = $scope.filteredModel[ j ][ $scope.indexProperty ];
+                                                var inputModelIndex = $scope.filteredModel[ j ][ $scope.indexProperty ];
                                                 $scope.inputModel[ inputModelIndex ][ $scope.tickProperty ] = true;
                                             }
                                         }
@@ -430,9 +430,9 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                         $scope.filteredModel[ index ][ $scope.tickProperty ]   = !$scope.filteredModel[ index ][ $scope.tickProperty ];
                     }
 
-                    // we refresh input model as well
-                    var inputModelIndex = $scope.filteredModel[ index ][ $scope.indexProperty ];                                        
-                    $scope.inputModel[ inputModelIndex ][ $scope.tickProperty ] = $scope.filteredModel[ index ][ $scope.tickProperty ];                    
+                    // we refresh input model as well -- ISSUE #488 FIX
+                    // var inputModelIndex = $scope.filteredModel[ index ][ $scope.indexProperty ];                                        
+                    // $scope.inputModel[ inputModelIndex ][ $scope.tickProperty ] = $scope.filteredModel[ index ][ $scope.tickProperty ];                    
                 }                                  
 
                 // we execute the callback function here
