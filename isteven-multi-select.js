@@ -759,6 +759,16 @@ angular.module( 'isteven-multi-select', ['ng'] ).directive( 'istevenMultiSelect'
                         break;
                     case 'FILTER':                        
                         $scope.tabIndex = helperItems.length - 1;
+			
+			// BUGFIX
+			// takes input ("Search..." box) element of the clicked element and sets the focus
+			var this_helperContainer = angular.element( element[ 0 ].querySelector( '.helperContainer' ) );
+			if (typeof this_helperContainer !== undefined ){
+				var this_search_box = this_helperContainer[0].getElementsByTagName( 'INPUT' )
+				if (typeof this_search_box !== undefined ){
+					this_search_box[0].focus()
+				}
+			}
                         break;
                     default:                        
                 }                                                                                 
